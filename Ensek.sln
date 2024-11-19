@@ -1,0 +1,80 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{5A58B590-15BC-4328-AB21-BFD91594B03A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{D820360D-489E-402D-B55C-12412B9C81E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{F2605321-AFB1-4AE3-B2D4-35775D99BB67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{23D0B449-4D63-455B-9529-EF1DBF22EFDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{D907A511-88BB-464A-AB6B-BB9DE45E8E06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "z_Solution_Items", "z_Solution_Items", "{D1BDDB74-51DC-49D9-BD5C-914197D6D227}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		ReadMe.md = ReadMe.md
+		Test.runsettings = Test.runsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Supplied Docs", "Supplied Docs", "{D57505DA-5CE2-41C1-9FC2-CC5845EB1289}"
+	ProjectSection(SolutionItems) = preProject
+		Supplied Docs\ENSEK REMOTE TECHNICAL TEST BRIEF 16-12-2021 (2).pptx = Supplied Docs\ENSEK REMOTE TECHNICAL TEST BRIEF 16-12-2021 (2).pptx
+		Supplied Docs\Meter_Reading.xlsx = Supplied Docs\Meter_Reading.xlsx
+		Supplied Docs\Test_Accounts.xlsx = Supplied Docs\Test_Accounts.xlsx
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.Tests", "Tests\Ensek.Tests\Ensek.Tests.csproj", "{8EDED03B-C356-4420-9DB8-8B00B613F8FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.ApiService", "Service\Ensek.ApiService\Ensek.ApiService.csproj", "{61D5B0F7-0FB2-49B4-BC82-4BE356145D71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.AppHost", "Service\Ensek.AppHost\Ensek.AppHost.csproj", "{0C504F3A-BAB4-43A8-8972-F0A2AEF8268F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.Web", "Client\Ensek.Web\Ensek.Web.csproj", "{E1A021DC-4CFF-4BDD-9A7E-6AC63E6ECF5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ensek.ServiceDefaults", "Common\Ensek.ServiceDefaults\Ensek.ServiceDefaults.csproj", "{B5819274-D3C2-42CA-97DA-0CD4B997E511}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EDED03B-C356-4420-9DB8-8B00B613F8FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDED03B-C356-4420-9DB8-8B00B613F8FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDED03B-C356-4420-9DB8-8B00B613F8FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDED03B-C356-4420-9DB8-8B00B613F8FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61D5B0F7-0FB2-49B4-BC82-4BE356145D71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61D5B0F7-0FB2-49B4-BC82-4BE356145D71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61D5B0F7-0FB2-49B4-BC82-4BE356145D71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61D5B0F7-0FB2-49B4-BC82-4BE356145D71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C504F3A-BAB4-43A8-8972-F0A2AEF8268F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C504F3A-BAB4-43A8-8972-F0A2AEF8268F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C504F3A-BAB4-43A8-8972-F0A2AEF8268F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C504F3A-BAB4-43A8-8972-F0A2AEF8268F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1A021DC-4CFF-4BDD-9A7E-6AC63E6ECF5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1A021DC-4CFF-4BDD-9A7E-6AC63E6ECF5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1A021DC-4CFF-4BDD-9A7E-6AC63E6ECF5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1A021DC-4CFF-4BDD-9A7E-6AC63E6ECF5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5819274-D3C2-42CA-97DA-0CD4B997E511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5819274-D3C2-42CA-97DA-0CD4B997E511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5819274-D3C2-42CA-97DA-0CD4B997E511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5819274-D3C2-42CA-97DA-0CD4B997E511}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D907A511-88BB-464A-AB6B-BB9DE45E8E06} = {23D0B449-4D63-455B-9529-EF1DBF22EFDF}
+		{D57505DA-5CE2-41C1-9FC2-CC5845EB1289} = {D1BDDB74-51DC-49D9-BD5C-914197D6D227}
+		{8EDED03B-C356-4420-9DB8-8B00B613F8FD} = {23D0B449-4D63-455B-9529-EF1DBF22EFDF}
+		{61D5B0F7-0FB2-49B4-BC82-4BE356145D71} = {F2605321-AFB1-4AE3-B2D4-35775D99BB67}
+		{0C504F3A-BAB4-43A8-8972-F0A2AEF8268F} = {F2605321-AFB1-4AE3-B2D4-35775D99BB67}
+		{E1A021DC-4CFF-4BDD-9A7E-6AC63E6ECF5B} = {5A58B590-15BC-4328-AB21-BFD91594B03A}
+		{B5819274-D3C2-42CA-97DA-0CD4B997E511} = {D820360D-489E-402D-B55C-12412B9C81E6}
+	EndGlobalSection
+EndGlobal

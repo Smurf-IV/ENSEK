@@ -1,0 +1,401 @@
+﻿# Top-most EditorConfig file
+root = true
+
+[*]
+indent_size = 4
+indent_style = space
+# IDE0011: Add braces
+csharp_prefer_braces = true
+
+# Security Rules Enabled with default severity
+# Description: All Security Rules are enabled with default severity. Security Rules with IsEnabledByDefault = false are force enabled with default severity. Rules from a different category are disabled.
+
+# Code files
+[*.cs]
+
+# Expression value is never used
+dotnet_diagnostic.IDE0058.severity = suggestion 
+# Namespace "Microsoft.Extensions.Hosting" does not match folder structure
+dotnet_diagnostic.IDE0130.severity = None
+# Convert to block scoped namespace	Ensek.ServiceDefaults
+dotnet_diagnostic.IDE0160.severity = None
+
+# <!-- Types that own disposable fields should be disposable -->
+dotnet_diagnostic.CA1001.severity = warning 
+# CA1002	Change 'List<ModelDetail>' in '###' to use 'Collection<T>', 'ReadOnlyCollection<T>' or 'KeyedCollection<K,V>'
+dotnet_diagnostic.CA1002.severity = suggestion
+# CA1003	Remove 'CollapsedEventHandler' and replace its usage with a generic EventHandler, for example EventHandler<T>, where T is a valid EventArgs
+dotnet_diagnostic.CA1003.severity = suggestion
+# <!-- Enums should have zero value -->
+dotnet_diagnostic.CA1008.severity = warning 
+# CA1014	Mark assemblies with CLSCompliant // it is recommended to add this into the code somewhere `[assembly:CLSCompliant(true)]`
+dotnet_diagnostic.CA1014.severity = none
+Severity	Code	Description	Project	File	Line	Suppression State
+# CA1016	Mark assemblies with assembly version
+dotnet_diagnostic.CA1016.severity = none
+# CA1024	Use properties where appropriate
+dotnet_diagnostic.CA1024.severity = suggestion
+# Modify '####' to catch a more specific allowed exception type, or rethrow the exception
+dotnet_diagnostic.CA1031.severity = none
+# <!-- Implement standard exception constructors -->
+dotnet_diagnostic.CA1032.severity = suggestion
+# CA1044	Because property DesignStateContainer is write-only, either add a property getter with an accessibility that is greater than or equal to its setter or convert this property into a method
+dotnet_diagnostic.CA1044.severity = suggestion
+# Do not declare visible instance fields
+dotnet_diagnostic.CA1051.severity = none
+# <!-- Validate arguments of public methods -->
+dotnet_diagnostic.CA1062.severity = none 
+# <!-- Implement IDisposable Correctly -->
+dotnet_diagnostic.CA1063.severity = warning 
+# <!-- Implement IEquatable when overriding Object.Equals -->
+dotnet_diagnostic.CA1066.severity = warning 
+# <!-- CancellationToken parameters must come last -->
+dotnet_diagnostic.CA1068.severity = warning 
+
+# CA1303: Do not pass literals as localized parameters
+dotnet_diagnostic.CA1303.severity = none
+# <!-- Specify CultureInfo -->
+dotnet_diagnostic.CA1304.severity = warning 
+# CA1305	The behavior of 'Logger.Trace(string, uint)' could vary based on the current user's locale settings.
+dotnet_diagnostic.CA1305.severity = none
+# Specify StringComparison for clarity May beed to be removed due to  linq to SQL # tracked here https://github.com/dotnet/roslyn-analyzers/issues/3492
+dotnet_diagnostic.CA1307.severity = suggestion
+# CA1308: Normalize strings to uppercase
+dotnet_diagnostic.CA1308.severity = none
+# CA1309	Use ordinal string comparison // Hmm this attempts to replace `StringComparison.InvariantCultureIgnoreCase` with `StringComparison.IgnoreCase`
+dotnet_diagnostic.CA1309.severity = none
+
+# <!-- Avoid excessive complexity -->
+dotnet_diagnostic.CA1502.severity = suggestion 
+# <!-- Avoid unmaintainable code -->
+dotnet_diagnostic.CA1505.severity = suggestion 
+# <!-- Avoid excessive class coupling -->
+dotnet_diagnostic.CA1506.severity = none 
+# <!-- Use nameof to express symbol names -->
+dotnet_diagnostic.CA1507.severity = warning 
+# <!-- Because an application's API isn't typically referenced from outside the assembly, types can be made internal -->
+dotnet_diagnostic.CA1515.severity = none 
+
+# Names of 'Members' and '####' should differ by more than case
+dotnet_diagnostic.CA1708.severity = suggestion 
+# Remove the underscores from member name 
+dotnet_diagnostic.CA1707.severity = none
+# <!-- Flags enums should have plural names -->
+dotnet_diagnostic.CA1714.severity = warning 
+# Rename namespace #####.Shared.##### so that it no longer conflicts with the reserved language keyword 'Shared'. Using a reserved keyword as the name of a namespace makes it harder for consumers in other languages to use the namespace.
+dotnet_diagnostic.CA1716.severity = none 
+# <!-- Type names should not match namespaces -->
+dotnet_diagnostic.CA1724.severity = suggestion 
+# Use PascalCase for named placeholders in the logging message template
+dotnet_diagnostic.CA1727.severity = suggestion 
+
+# <!-- Review unused parameters -->
+dotnet_diagnostic.CA1801.severity = suggestion 
+# Initialize all static fields in '####' when those fields are declared and remove the explicit static constructor	
+dotnet_diagnostic.CA1810.severity = suggestion
+# CA1812	EyeBlobMover is an internal class that is apparently never instantiated. # Stupid analyzer does not handle Injection classes
+dotnet_diagnostic.CA1812.severity = none 
+# Properties should not return arrays
+dotnet_diagnostic.CA1819.severity = suggestion
+# Test for empty strings using string length Fires in Ling to SQL! Tracked here https://github.com/dotnet/roslyn-analyzers/issues/1508
+dotnet_diagnostic.CA1820.severity = suggestion
+# 	Member '@@@@@@@@@@' does not access instance data and can be marked as static
+dotnet_diagnostic.CA1822.severity = suggestion
+# <!-- Do not use Enumerable methods on indexable collections --> Why, the internal code knows about IList and optimises for that !
+dotnet_diagnostic.CA1826.severity = none 
+# <!-- Do not use Count() or LongCount() when Any() can be used -->
+dotnet_diagnostic.CA1827.severity = warning 
+# <!-- Do not use CountAsync() or LongCountAsync() when AnyAsync() can be used -->
+dotnet_diagnostic.CA1828.severity = warning 
+# <!-- Use Length/Count property instead of Count() when available -->
+dotnet_diagnostic.CA1829.severity = warning 
+# <!-- Prefer strongly-typed Append and Insert method overloads on StringBuilder -->
+dotnet_diagnostic.CA1830.severity = warning 
+# <!-- Use AsSpan or AsMemory instead of Range-based indexers when appropriate -->
+dotnet_diagnostic.CA1831.severity = warning 
+# <!-- Use AsSpan or AsMemory instead of Range-based indexers when appropriate -->
+dotnet_diagnostic.CA1832.severity = warning 
+dotnet_diagnostic.CA1833.severity = warning 
+# <!-- Consider using 'StringBuilder.Append(char)' when applicable -->
+dotnet_diagnostic.CA1834.severity = warning 
+# <!-- Prefer the 'Memory'-based overloads for 'ReadAsync' and 'WriteAsync' [Not Compatible with .net48!]-->
+dotnet_diagnostic.CA1835.severity = none 
+# <!-- Prefer IsEmpty over Count -->
+dotnet_diagnostic.CA1836.severity = warning 
+# For improved performance, use the LoggerMessage delegates instead of calling 'LoggerExtensions.LogError
+dotnet_diagnostic.CA1848.severity = suggestion
+
+#<!-- Dispose objects before losing scope -->
+dotnet_diagnostic.CA2000.severity = suggestion 
+#<!-- Consider calling ConfigureAwait on the awaited task -->
+dotnet_diagnostic.CA2007.severity = none
+#<!-- Avoid infinite recursion -->
+dotnet_diagnostic.CA2011.severity = warning 
+#<!-- Use ValueTasks correctly -->
+dotnet_diagnostic.CA2012.severity = warning 
+#<!-- Do not use ReferenceEquals with value types -->
+dotnet_diagnostic.CA2013.severity = warning 
+#<!-- Do not use stackalloc in loops -->
+dotnet_diagnostic.CA2014.severity = warning 
+#<!-- Do not define finalizers for types derived from MemoryManager<T> -->
+dotnet_diagnostic.CA2015.severity = warning 
+#<!-- Forward the 'CancellationToken' parameter to methods that take one -->
+dotnet_diagnostic.CA2016.severity = warning 
+
+# <!-- Review SQL queries for security vulnerabilities -->
+dotnet_diagnostic.CA2100.severity = warning 
+# <!-- Review visible event handlers -->
+dotnet_diagnostic.CA2109.severity = warning
+# <!-- Seal methods that satisfy private interfaces -->
+dotnet_diagnostic.CA2119.severity = warning
+#<!-- Do Not Catch Corrupted State Exceptions -->
+dotnet_diagnostic.CA2153.severity = warning
+
+# <!-- Rethrow to preserve stack details -->
+dotnet_diagnostic.CA2200.severity = warning 
+#<!-- Instantiate argument exceptions correctly -->
+dotnet_diagnostic.CA2208.severity = none
+# <!-- Disposable fields should be disposed -->
+dotnet_diagnostic.CA2213.severity = warning 
+# <!-- Do not call overridable methods in constructors -->
+dotnet_diagnostic.CA2214.severity = error 
+# <!-- Dispose methods should call base class dispose -->
+dotnet_diagnostic.CA2215.severity = warning 
+# Change 'Scopes' to be read-only by removing the property setter
+dotnet_diagnostic.CA2227.severity = none 
+# <!-- Pass system uri objects instead of strings -->
+dotnet_diagnostic.CA2234.severity = warning 
+# <!-- Test for NaN correctly -->
+dotnet_diagnostic.CA2242.severity = warning 
+# <!-- Attribute string literals should parse correctly -->
+dotnet_diagnostic.CA2243.severity = warning 
+# <!-- Do not duplicate indexed element initializations -->
+dotnet_diagnostic.CA2244.severity = warning 
+# <!-- Do not assign a property to itself -->
+dotnet_diagnostic.CA2245.severity = warning 
+# The logging message template should not vary between calls to 'LoggerExtensions.
+dotnet_diagnostic.CA2254.severity = suggestion
+
+# <!-- Do not use insecure deserializer BinaryFormatter -->
+dotnet_diagnostic.CA2300.severity = warning 
+# <!-- Do not call BinaryFormatter.Deserialize without first setting BinaryFormatter.Binder -->
+dotnet_diagnostic.CA2301.severity = warning 
+# <!-- Ensure BinaryFormatter.Binder is set before calling BinaryFormatter.Deserialize -->
+dotnet_diagnostic.CA2302.severity = warning 
+# <!-- Do not use insecure deserializer LosFormatter -->
+dotnet_diagnostic.CA2305.severity = warning 
+# <!-- Do not use insecure deserializer NetDataContractSerializer -->
+dotnet_diagnostic.CA2310.severity = warning 
+# <!-- Do not deserialize without first setting NetDataContractSerializer.Binder -->
+dotnet_diagnostic.CA2311.severity = warning 
+# <!-- Ensure NetDataContractSerializer.Binder is set before deserializing -->
+dotnet_diagnostic.CA2312.severity = warning 
+# <!-- Do not use insecure deserializer ObjectStateFormatter -->
+dotnet_diagnostic.CA2315.severity = warning 
+# <!-- Do not deserialize with JavaScriptSerializer using a SimpleTypeResolver -->
+dotnet_diagnostic.CA2321.severity = warning 
+# <!-- Ensure JavaScriptSerializer is not initialized with SimpleTypeResolver before deserializing -->
+dotnet_diagnostic.CA2322.severity = warning 
+# <!-- Do not use TypeNameHandling values other than None -->
+dotnet_diagnostic.CA2326.severity = warning 
+# <!-- Do not use insecure JsonSerializerSettings -->
+dotnet_diagnostic.CA2327.severity = warning 
+# <!-- Ensure that JsonSerializerSettings are secure -->
+dotnet_diagnostic.CA2328.severity = warning 
+# <!-- Do not deserialize with JsonSerializer using an insecure configuration -->
+dotnet_diagnostic.CA2329.severity = warning 
+# <!-- Ensure that JsonSerializer has a secure configuration when deserializing -->
+dotnet_diagnostic.CA2330.severity = warning 
+# <!-- Do not use DataTable.ReadXml() with untrusted data -->
+dotnet_diagnostic.CA2350.severity = warning 
+# <!-- Do not use DataSet.ReadXml() with untrusted data -->
+dotnet_diagnostic.CA2351.severity = warning 
+# <!-- Unsafe DataSet or DataTable in serializable type can be vulnerable to remote code execution attacks -->
+dotnet_diagnostic.CA2352.severity = warning 
+# <!-- Unsafe DataSet or DataTable in serializable type -->
+dotnet_diagnostic.CA2353.severity = warning 
+# <!-- Unsafe DataSet or DataTable in deserialized object graph can be vulnerable to remote code execution attacks -->
+dotnet_diagnostic.CA2354.severity = warning 
+# <!-- Unsafe DataSet or DataTable type found in deserializable object graph -->
+dotnet_diagnostic.CA2355.severity = warning 
+# <!-- Unsafe DataSet or DataTable type in web deserializable object graph -->
+dotnet_diagnostic.CA2356.severity = warning 
+# <!-- Ensure autogenerated class containing DataSet.ReadXml() is not used with untrusted data -->
+dotnet_diagnostic.CA2361.severity = warning 
+# <!-- Unsafe DataSet or DataTable in autogenerated serializable type can be vulnerable to remote code execution attacks -->
+dotnet_diagnostic.CA2362.severity = warning 
+# <!-- Review code for SQL injection vulnerabilities -->
+dotnet_diagnostic.CA3001.severity = warning 
+# <!-- Review code for XSS vulnerabilities -->
+dotnet_diagnostic.CA3002.severity = warning 
+# <!-- Review code for file path injection vulnerabilities -->
+dotnet_diagnostic.CA3003.severity = warning 
+# <!-- Review code for information disclosure vulnerabilities -->
+dotnet_diagnostic.CA3004.severity = warning 
+# <!-- Review code for LDAP injection vulnerabilities -->
+dotnet_diagnostic.CA3005.severity = warning 
+# <!-- Review code for process command injection vulnerabilities -->
+dotnet_diagnostic.CA3006.severity = warning 
+# <!-- Review code for open redirect vulnerabilities -->
+dotnet_diagnostic.CA3007.severity = warning 
+# <!-- Review code for XPath injection vulnerabilities -->
+dotnet_diagnostic.CA3008.severity = warning 
+# <!-- Review code for XML injection vulnerabilities -->
+dotnet_diagnostic.CA3009.severity = warning 
+# <!-- Review code for XAML injection vulnerabilities -->
+dotnet_diagnostic.CA3010.severity = warning 
+# <!-- Review code for DLL injection vulnerabilities -->
+dotnet_diagnostic.CA3011.severity = warning 
+# <!-- Review code for regex injection vulnerabilities -->
+dotnet_diagnostic.CA3012.severity = warning 
+# <!-- Do Not Add Schema By URL -->
+dotnet_diagnostic.CA3061.severity = warning 
+# <!-- Insecure DTD processing in XML -->
+dotnet_diagnostic.CA3075.severity = warning 
+# <!-- Insecure XSLT script processing. -->
+dotnet_diagnostic.CA3076.severity = warning 
+# <!-- Insecure Processing in API Design, XmlDocument and XmlTextReader -->
+dotnet_diagnostic.CA3077.severity = warning 
+# <!-- Mark Verb Handlers With Validate Antiforgery Token -->
+dotnet_diagnostic.CA3147.severity = warning 
+# <!-- Do Not Use Weak Cryptographic Algorithms -->
+dotnet_diagnostic.CA5350.severity = warning 
+# <!-- Do Not Use Broken Cryptographic Algorithms -->
+dotnet_diagnostic.CA5351.severity = warning 
+# <!-- Review cipher mode usage with cryptography experts -->
+dotnet_diagnostic.CA5358.severity = warning 
+# <!-- Review cipher mode usage with cryptography experts -->
+# <!-- Review cipher mode usage with cryptography experts -->
+dotnet_diagnostic.CA5359.severity = warning 
+# <!-- Do Not Call Dangerous Methods In Deserialization -->
+dotnet_diagnostic.CA5360.severity = warning 
+# <!-- Do Not Disable SChannel Use of Strong Crypto -->
+dotnet_diagnostic.CA5361.severity = warning 
+# <!-- Potential reference cycle in deserialized object graph -->
+dotnet_diagnostic.CA5362.severity = warning 
+# <!-- Do Not Disable Request Validation -->
+dotnet_diagnostic.CA5363.severity = warning 
+# <!-- Do Not Use Deprecated Security Protocols -->
+dotnet_diagnostic.CA5364.severity = warning 
+# <!-- Do Not Disable HTTP Header Checking -->
+dotnet_diagnostic.CA5365.severity = warning 
+# <!-- Use XmlReader For DataSet Read Xml -->
+dotnet_diagnostic.CA5366.severity = warning 
+# <!-- Do Not Serialize Types With Pointer Fields -->
+dotnet_diagnostic.CA5367.severity = warning 
+# <!-- Set ViewStateUserKey For Classes Derived From Page -->
+dotnet_diagnostic.CA5368.severity = warning 
+# <!-- Use XmlReader For Deserialize -->
+dotnet_diagnostic.CA5369.severity = warning 
+# <!-- Use XmlReader For Validating Reader -->
+dotnet_diagnostic.CA5370.severity = warning 
+# <!-- Use XmlReader For Schema Read -->
+dotnet_diagnostic.CA5371.severity = warning 
+# <!-- Use XmlReader For XPathDocument -->
+dotnet_diagnostic.CA5372.severity = warning 
+# <!-- Do not use obsolete key derivation function -->
+dotnet_diagnostic.CA5373.severity = warning 
+# <!-- Do Not Use XslTransform -->
+dotnet_diagnostic.CA5374.severity = warning 
+# <!-- Do Not Use Account Shared Access Signature -->
+dotnet_diagnostic.CA5375.severity = warning 
+# <!-- Use SharedAccessProtocol HttpsOnly -->
+dotnet_diagnostic.CA5376.severity = warning 
+# <!-- Use Container Level Access Policy -->
+dotnet_diagnostic.CA5377.severity = warning 
+# <!-- Do not disable ServicePointManagerSecurityProtocols -->
+dotnet_diagnostic.CA5378.severity = warning 
+# <!-- Do Not Use Weak Key Derivation Function Algorithm -->
+dotnet_diagnostic.CA5379.severity = warning 
+# <!-- Do Not Add Certificates To Root Store -->
+dotnet_diagnostic.CA5380.severity = warning 
+# <!-- Ensure Certificates Are Not Added To Root Store -->
+dotnet_diagnostic.CA5381.severity = warning 
+# <!-- Use Secure Cookies In ASP.Net Core -->
+dotnet_diagnostic.CA5382.severity = warning 
+# <!-- Ensure Use Secure Cookies In ASP.Net Core -->
+dotnet_diagnostic.CA5383.severity = warning 
+# <!-- Do Not Use Digital Signature Algorithm (DSA) -->
+dotnet_diagnostic.CA5384.severity = warning 
+# <!-- Use Rivest–Shamir–Adleman (RSA) Algorithm With Sufficient Key Size -->
+dotnet_diagnostic.CA5385.severity = warning 
+# <!-- Avoid hardcoding SecurityProtocolType value -->
+dotnet_diagnostic.CA5386.severity = warning 
+# <!-- Do Not Use Weak Key Derivation Function With Insufficient Iteration Count -->
+dotnet_diagnostic.CA5387.severity = warning 
+# <!-- Ensure Sufficient Iteration Count When Using Weak Key Derivation Function -->
+dotnet_diagnostic.CA5388.severity = warning 
+# <!-- Do Not Add Archive Item's Path To The Target File System Path -->
+dotnet_diagnostic.CA5389.severity = warning 
+# <!-- Do not hard-code encryption key -->
+dotnet_diagnostic.CA5390.severity = warning 
+# <!-- Use antiforgery tokens in ASP.NET Core MVC controllers -->
+dotnet_diagnostic.CA5391.severity = warning 
+# <!-- Use DefaultDllImportSearchPaths attribute for P/Invokes -->
+dotnet_diagnostic.CA5392.severity = warning 
+# <!-- Do not use unsafe DllImportSearchPath value -->
+dotnet_diagnostic.CA5393.severity = warning 
+# <!-- Random is an insecure random number generator. Use cryptographically secure random number generators when randomness is required for security. -->
+dotnet_diagnostic.CA5394.severity = warning 
+# <!-- Miss HttpVerb attribute for action methods -->
+dotnet_diagnostic.CA5395.severity = warning 
+# <!-- Set HttpOnly to true for HttpCookie -->
+dotnet_diagnostic.CA5396.severity = warning 
+# <!-- Do not use deprecated SslProtocols values -->
+dotnet_diagnostic.CA5397.severity = warning 
+# <!-- Avoid hardcoded SslProtocols values -->
+dotnet_diagnostic.CA5398.severity = warning 
+# <!-- HttpClients should enable certificate revocation list checks -->
+dotnet_diagnostic.CA5399.severity = warning 
+# <!-- Ensure HttpClient certificate revocation list check is not disabled -->
+dotnet_diagnostic.CA5400.severity = warning 
+# <!-- Do not use CreateEncryptor with non-default IV -->
+dotnet_diagnostic.CA5401.severity = warning 
+# <!-- Use CreateEncryptor with the default IV  -->
+dotnet_diagnostic.CA5402.severity = warning 
+# <!-- Do not hard-code certificate -->
+dotnet_diagnostic.CA5403.severity = warning 
+
+#<!-- Analyzer version mismatch -->
+dotnet_diagnostic.CA9999.severity = warning 
+
+#<!-- 'default' expression can be simplified -->
+dotnet_diagnostic.IDE0034.severity = none
+
+#<!-- Remove unnecessary suppression -->
+dotnet_diagnostic.IDE0079.severity = none
+
+#<!-- Naming rule violation: These words must begin with upper case characters:-->
+dotnet_diagnostic.IDE1006.severity = none
+
+
+#######################################################################################################
+# Modify analysers on Unit Test code files
+[*Test*]
+
+# <!--	Unnecessary assignment of a value to 'result' -->
+dotnet_diagnostic.IDE0059.severity = none 
+
+# <!-- Use simple 'using' statement -->
+dotnet_diagnostic.IDE0063.severity = none 
+csharp_using_directive_placement=outside_namespace:warning
+
+# Synchronously waiting on tasks or awaiters may cause deadlocks. Use await or JoinableTaskFactory.Run instead.
+dotnet_diagnostic.VSTHRD002.severity = none 
+
+# Use "Async" suffix for async methods
+dotnet_diagnostic.VSTHRD200.severity = none 
+
+# <!-- Avoid excessive class coupling -->
+dotnet_diagnostic.CA1506.severity = none 
+
+#<!-- Dispose objects before losing scope -->
+dotnet_diagnostic.CA2000.severity = none 
+
+# <!-- Review SQL queries for security vulnerabilities -->
+dotnet_diagnostic.CA2100.severity = none 
+
+# <!-- Random is an insecure random number generator. Use cryptographically secure random number generators when randomness is required for security. -->
+dotnet_diagnostic.CA5394.severity = none 
+
+
