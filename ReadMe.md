@@ -28,6 +28,13 @@
 - Reading values should be in the format NNNNN
   - **Q:** What should be done when the values are not in this format ?
   - **A:** See Above, A record of failed reading should be kept, and returned.
+  - **Q**: What should be done about values that a lower, at a later date ?
+  - **A**: ?
+  - Notes: 
+      - Negative values are also a failure
+      - No Batch insert due to requirement to have individual failure lines (This is an ETL style ingest)
+      - DateTime format is assumed to be `dd/MM/yyyy hh:mm` enUk 24hour UTC zero padding!
+
 
 
 ## Nice To Have:
@@ -36,3 +43,33 @@
 
 - When an account has an existing read, ensure the new read isn’t older than the existing read
 
+<hr/>
+
+# Assumptions
+- Visual Studio 17.12
+- Sql LocalDB installed
+- Each project will have analyzers for security and "others" to ehance the default(s) of Rosylyn.
+- Database has been Created (Migrated) via the `Ensek.Database.Builder` application
+- DateStamps in the CSV file are in UTC (If valid!)
+- `nuget` packages should not be "Copy-Left" style licenses!
+
+## Architecture / Design Styles
+- Authentication and User Access (in general), is beyond the scope of this. Therefore:
+  - No need for `[Authorize]` attributes etc on the controller API(s)
+  - And, no need for security checks within the `Services` implementation classes either.
+  - Add `#pragma warning disable SCS0016` to each controller file.
+- No versioning to be used in API checking etc.
+- CQRS will not be adhered to, but, Readers and Writers will be in separate classes
+
+### Database
+- Entity Framework used for DB creation / Migrations / Table access
+- Migrations / Contexts / Models / Access are **all** in separate projects, to ensure SOLID principles
+
+### Service
+- Controllers / Services / Data access to be in sepearate projects to allow testing and SOLID principles
+- Use `TimeSortableId`, for Logging moniker tracking (Time Permitting!), and tracking "Failed" reading storage
+
+### Testing
+- Try not to use mocking: the database exists; Use it!
+- Use `FluentAssertions` to abstract test conditions away from Test runner style
+- Use same code quality practices (Apart from a few exceptions in the `.editorConfig` file)

@@ -13,12 +13,24 @@ csharp_prefer_braces = true
 # Code files
 [*.cs]
 
+# Use explicit type instead of 'var'
+dotnet_diagnostic.IDE0008.severity = suggestion
+# Use block body for method
+dotnet_diagnostic.IDE0022.severity = None
+# Private member '#####' can be removed as the value assigned to it is never read
+dotnet_diagnostic.IDE0052.severity = None
+# Fix formatting
+dotnet_diagnostic.IDE0055.severity = suggestion 
 # Expression value is never used
 dotnet_diagnostic.IDE0058.severity = suggestion 
+# Remove unused parameter '#####' if it is not part of a shipped public API
+dotnet_diagnostic.IDE0060.severity = None
 # Namespace "Microsoft.Extensions.Hosting" does not match folder structure
 dotnet_diagnostic.IDE0130.severity = None
 # Convert to block scoped namespace	Ensek.ServiceDefaults
 dotnet_diagnostic.IDE0160.severity = None
+# Use primary constructor
+dotnet_diagnostic.IDE0290.severity = None
 
 # <!-- Types that own disposable fields should be disposable -->
 dotnet_diagnostic.CA1001.severity = warning 
