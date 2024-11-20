@@ -83,6 +83,7 @@
 - ![](./Tests/Data/MeterReadingTable.png)
 
 # To Do's
+- Need another type of CSV reader that can give the line data as there are 3 missing lines !
 - Write Unit tests for each of the areas
 - Add a command to get the `FailedMeterReadings`
  
