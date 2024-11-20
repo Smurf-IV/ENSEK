@@ -28,6 +28,7 @@
     <ProjectReference Include="..\..\Common\Ensek.ServiceDefaults\Ensek.ServiceDefaults.csproj" />
     <ProjectReference Include="..\..\Data_Service\Ensek.DataAccess\Ensek.DataAccess.csproj" />
     <ProjectReference Include="..\..\Data_Service\Ensek.Database.Migrations\Ensek.Database.Migrations.csproj" />
+    <ProjectReference Include="..\Ensek.Service.Controllers\Ensek.Service.Controllers.csproj" />
     <!--<ProjectReference Include="..\Ensek.Service.Controllers\Ensek.Service.Controllers.csproj" />-->
     <ProjectReference Include="..\Ensek.Service.Services\Ensek.Service.Services.csproj" />
     <ProjectReference Include="..\Ensek.Service.Logging\Ensek.Service.Logging.csproj" />

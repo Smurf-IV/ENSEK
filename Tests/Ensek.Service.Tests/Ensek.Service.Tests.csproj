@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="FluentAssertions" Version="7.0.0-alpha.5" />
+        <PackageReference Include="FluentAssertions.Analyzers" Version="0.34.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+      <PackageReference Include="FluentAssertions.Analyzers" Version="0.34.1">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="MockQueryable.Core" Version="7.0.3" />
+    <PackageReference Include="MockQueryable.Moq" Version="7.0.3" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="NUnit" Version="4.2.2" />
+    <PackageReference Include="NUnit.Analyzers" Version="4.3.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Data\Meter_Reading.csv" Link="Data\Meter_Reading.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Data\Test_Accounts.csv" Link="Data\Test_Accounts.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Ensek.Dto.Common\Ensek.Dto.Common.csproj" />
+    <ProjectReference Include="..\..\Common\Ensek.Infrastructure.Common\Ensek.Infrastructure.Common.csproj" />
+    <ProjectReference Include="..\..\Data_Service\Ensek.DataAccess\Ensek.DataAccess.csproj" />
+    <ProjectReference Include="..\..\Data_Service\Ensek.Database.Contexts\Ensek.Database.Contexts.csproj" />
+    <ProjectReference Include="..\..\Data_Service\Ensek.Database.Tables\Ensek.Database.Tables.csproj" />
+    <ProjectReference Include="..\..\Service\Ensek.Service.Controllers\Ensek.Service.Controllers.csproj" />
+    <ProjectReference Include="..\..\Service\Ensek.Service.Logging\Ensek.Service.Logging.csproj" />
+    <ProjectReference Include="..\..\Service\Ensek.Service.Services\Ensek.Service.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\Meter_Reading_Empty.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 using Ensek.Dto.Common;
 using Ensek.Service.Services;
@@ -6,6 +7,7 @@ using Ensek.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+
 using TSID.Creator.NET;
 
 #pragma warning disable SCS0016
@@ -13,7 +15,7 @@ using TSID.Creator.NET;
 namespace Ensek.Service.Controllers;
 
 [ApiController]
-[Route("api/MeterReading")]
+[Route("meter-reading-uploads")]
 public class MeterReadingController : ControllerBase
 {
     private readonly ILogger<MeterReadingController> _logger;
@@ -27,13 +29,28 @@ public class MeterReadingController : ControllerBase
     }
 
     [HttpPost]
-    [Route(@"Import")]
+    //[Route(@"Import")]
     public async Task<ImportResultDto> ImportAsync([FromForm] IFormFileCollection file)
     {
         long tsId = TsidCreator.GetTsid().ToLong();
+        _logger.LogTrace("{TsId} ImportAsync IN", tsId);
+        ImportResultDto? importResult = null;
         try
         {
-            ImportResultDto importResult = await _meterReadingService.ImportAsync(tsId, file[0].OpenReadStream());
+            importResult = await _meterReadingService.ImportAsync(tsId, file[0].OpenReadStream());
+            if (importResult is null)
+            {
+                // Handle Mocking hiding the call, Or something has gone wrong with the DI
+                throw new FieldAccessException("Unable to access file");
+            }
+
+            return importResult;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "ImportAsync");
+            importResult ??= new ImportResultDto();
+            importResult.AddError(null, ex.Message);
             return importResult;
         }
         finally

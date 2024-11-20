@@ -46,7 +46,7 @@ public class MeterReadingService : IMeterReadingService
         };
         try
         {
-            // TODO: CSVHelper does not return an invlaid line if it throws an exception
+            // TODO: CSVHelper does not return an invalid line if it throws an exception
             //await foreach (MeterReadingDto line in _csvService.ReadCSVAsync<MeterReadingDto, MeterReadingDto>(file)
             //                   .WithCancellation(cancellationToken))
             var reader = new StreamReader(file);
