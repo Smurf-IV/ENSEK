@@ -7,7 +7,7 @@ public record FailedMeterReadingDto
     /// <summary>
     /// Used for tracking back to the Logging
     /// </summary>
-    public ulong TsIdentifier { get; set; }
+    public long TsIdentifier { get; set; }
 
     public int? AccountId { get; set; }
 

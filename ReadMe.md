@@ -67,7 +67,7 @@
 
 ### Service
 - Controllers / Services / Data access to be in sepearate projects to allow testing and SOLID principles
-- Use `TimeSortableId`, for Logging moniker tracking (Time Permitting!), and tracking "Failed" reading storage
+- Use [TimeSortableId](https://github.com/kgkoutis/TSID.Creator.NET), for Logging moniker tracking (Time Permitting!), and tracking "Failed" reading storage
 
 ### Client
 - Will be a blazor pages app
@@ -77,3 +77,11 @@
 - Try not to use mocking: the database exists; Use it!
 - Use `FluentAssertions` to abstract test conditions away from Test runner style
 - Use same code quality practices (Apart from a few exceptions in the `.editorConfig` file)
+
+# To Do's
+- Get the results serialised back to the client
+- Seed the database
+- Change CSV Helpers default to not throw exception on conversion failure
+- Write Unit tests for each of the areas
+- Add a command to get the `FailedMeterReadings`
+ 

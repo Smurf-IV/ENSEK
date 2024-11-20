@@ -7,7 +7,7 @@ namespace Ensek.Service.Services;
 
 public class FailedMeterReadingService : IFailedMeterReadingService
 {
-    public Task<IReadOnlyList<FailedMeterReadingDto>> GetFailedMeterReadingsAsync(ulong tsId, ulong lookupTsId)
+    public Task<IReadOnlyList<FailedMeterReadingDto>> GetFailedMeterReadingsAsync(long tsId, long lookupTsId)
     {
         throw new System.NotImplementedException();
     }

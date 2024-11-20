@@ -22,6 +22,7 @@ internal class AccountReader : IAccountReader
 
     public Task<Account?> GetAccountAsync(int accountId)
     {
-        return _ensekContext.Accounts.SingleOrDefaultAsync(a => a.AccountId == accountId);
+        // First is okay because the AccountId is a unique key index
+        return _ensekContext.Accounts.FirstOrDefaultAsync(a => a.AccountId == accountId);
     }
 }

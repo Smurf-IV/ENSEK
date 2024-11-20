@@ -32,10 +32,14 @@ public class MeterReadingService : IMeterReadingService
         _failedMeterReadingWriter = failedMeterReadingWriter;
     }
 
-    public async Task<ImportResultDto> ImportAsync(ulong tsId, Stream file, CancellationToken cancellationToken = default)
+    public async Task<ImportResultDto> ImportAsync(long tsId, Stream file,
+        CancellationToken cancellationToken = default)
     {
         _logger.LogTrace("{TsId} ImportAsync IN", tsId);
-        var results = new ImportResultDto();
+        var results = new ImportResultDto
+        {
+            TsId = tsId
+        };
         try
         {
             await foreach (MeterReadingDto line in _csvService.ReadCSVAsync<MeterReadingDto>(file)
@@ -67,12 +71,11 @@ public class MeterReadingService : IMeterReadingService
                 await _meterReadingWriter.CreateMeterReadingAsync(line, dateTime);
                 results.AddSuccess();
             }
-
         }
         catch (Exception ex)
         {
             _logger.LogError(ex, "{TsId} ImportAsync FAILED", tsId);
-            results.AddError(null!, ex.Message);
+            results.AddError(null, ex.Message);
         }
         finally
         {

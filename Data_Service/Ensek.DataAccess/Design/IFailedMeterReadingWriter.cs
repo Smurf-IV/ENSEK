@@ -7,5 +7,5 @@ public interface IFailedMeterReadingWriter
     /// <summary>
     /// Returns the MeterReadingId
     /// </summary>
-    Task<int> CreateFailedMeterReadingAsync(ulong tsId, MeterReadingDto failedReading);
+    Task<int> CreateFailedMeterReadingAsync(long tsId, MeterReadingDto failedReading);
 }

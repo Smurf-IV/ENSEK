@@ -4,5 +4,5 @@ namespace Ensek.Service.Services;
 
 public interface IAccountService
 {
-    Task<bool> CheckAccountIdAsync(ulong tsId, int accountId);
+    Task<bool> CheckAccountIdAsync(long tsId, int accountId);
 }

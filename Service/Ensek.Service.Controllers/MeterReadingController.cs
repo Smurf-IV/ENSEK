@@ -6,6 +6,7 @@ using Ensek.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using TSID.Creator.NET;
 
 #pragma warning disable SCS0016
 
@@ -27,12 +28,18 @@ public class MeterReadingController : ControllerBase
 
     [HttpPost]
     [Route(@"Import")]
-    public async Task<IActionResult> ImportAsync([FromForm] IFormFileCollection file)
+    public async Task<ImportResultDto> ImportAsync([FromForm] IFormFileCollection file)
     {
-        ulong tsId = 0;
-
-        ImportResultDto importResult = await _meterReadingService.ImportAsync(tsId, file[0].OpenReadStream());
-        return Ok(importResult);
+        long tsId = TsidCreator.GetTsid().ToLong();
+        try
+        {
+            ImportResultDto importResult = await _meterReadingService.ImportAsync(tsId, file[0].OpenReadStream());
+            return importResult;
+        }
+        finally
+        {
+            _logger.LogTrace("{TsId} ImportAsync OUT", tsId);
+        }
     }
 
 }

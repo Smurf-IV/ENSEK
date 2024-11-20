@@ -7,6 +7,6 @@ namespace Ensek.Service.Services;
 
 public interface IFailedMeterReadingService
 {
-    Task<IReadOnlyList<FailedMeterReadingDto>> GetFailedMeterReadingsAsync(ulong tsId, ulong lookupTsId);
+    Task<IReadOnlyList<FailedMeterReadingDto>> GetFailedMeterReadingsAsync(long tsId, long lookupTsId);
 
 }

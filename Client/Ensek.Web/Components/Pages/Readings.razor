@@ -27,6 +27,10 @@
         <div class="progress-container">
             <h4 class="progress-text">Successful: @(_progress.SuccessLines)</h4>
             <h4 class="progress-text">Failed: @(_progress.FailedLines)</h4>
+            @if (!string.IsNullOrWhiteSpace(_progress.ExceptionMessage))
+            {
+                <h4 class="progress-text">ExceptionMessage: @(_progress.ExceptionMessage)</h4>
+            }
         </div>
     }
 </div>

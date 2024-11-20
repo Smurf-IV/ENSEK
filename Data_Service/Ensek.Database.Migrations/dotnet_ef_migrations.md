@@ -5,7 +5,7 @@ Create a migration by navigating to the root of the `Ensek\Data_Service\Ensek.Da
 ``` dos
 dotnet tool update dotnet-ef -g --ignore-failed-sources
 ```
-Latest version is 6.0.2
+Latest version is `9.0.0`
 
 ## Migrations 
 - The `NewMigration` can be replaced with a meaningful name, as it will be appended to the classes that are generated.
@@ -13,15 +13,6 @@ Latest version is 6.0.2
 
 ``` dos
 
-dotnet ef migrations add ProjectModel --verbose --context LR.Ocelot.DataService.Database.Contexts.ProjectModelContext --startup-project ..\Database.Builder
-
-
-dotnet ef migrations add WorkFlow --verbose --context LR.Ocelot.DataService.Database.Contexts.WorkFlowContext --startup-project ..\Database.Builder
-
-
-dotnet ef migrations add OcxModel --verbose --context LR.Ocelot.DataService.Database.Contexts.OcxModelContext --startup-project ..\Database.Builder
-
-
-dotnet ef migrations add TransverseSections --verbose --context LR.Ocelot.DataService.Database.Contexts.TransverseSectionsContext --startup-project ..\Database.Builder
+dotnet ef migrations add ProjectModel --verbose --context Ensek.Database.Contexts.EnsekContext --startup-project ..\Ensek.Database.Builder
 
 ```
