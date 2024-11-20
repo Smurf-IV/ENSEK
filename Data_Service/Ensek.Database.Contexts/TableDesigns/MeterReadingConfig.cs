@@ -10,7 +10,8 @@ internal class MeterReadingConfig : IEntityTypeConfiguration<MeterReading>
     public void Configure(EntityTypeBuilder<MeterReading> builder)
     {
         builder.Property(b => b.AccountId)
-            .IsRequired();
+            .IsRequired()
+            .ValueGeneratedNever();
 
         builder.Property(b => b.ReadingDateTime)
             .IsRequired()

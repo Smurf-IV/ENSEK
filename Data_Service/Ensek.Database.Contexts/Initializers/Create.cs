@@ -11,6 +11,7 @@ public class Create : IDatabaseInitializer
 {
     public void Initialize(DbContext dBContext)
     {
+        dBContext.Database.EnsureDeleted();
         dBContext.Database.EnsureCreated();
     }
 }

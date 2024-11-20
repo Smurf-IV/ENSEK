@@ -50,6 +50,7 @@
 - Sql LocalDB installed
 - Each project will have analyzers for security and "others" to ehance the default(s) of Rosylyn.
 - Database has been Created (Migrated) via the `Ensek.Database.Builder` application
+  - ![](./Data_Service/Ensek.Database.Builder/CheckDbCreated.png)
 - DateStamps in the CSV file are in UTC (If valid!)
 - `nuget` packages should not be "Copy-Left" style licenses!
 
@@ -79,9 +80,8 @@
 - Use same code quality practices (Apart from a few exceptions in the `.editorConfig` file)
 
 # To Do's
-- Get the results serialised back to the client
-- Seed the database
 - Change CSV Helpers default to not throw exception on conversion failure
+- Get the results serialised back to the client
 - Write Unit tests for each of the areas
 - Add a command to get the `FailedMeterReadings`
  

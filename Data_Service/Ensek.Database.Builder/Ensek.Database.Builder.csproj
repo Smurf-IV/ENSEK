@@ -14,6 +14,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="CsvHelper" Version="33.0.1" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="9.0.0">
             <PrivateAssets>all</PrivateAssets>
@@ -41,8 +42,19 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Common\Ensek.Dto.Common\Ensek.Dto.Common.csproj" />
       <ProjectReference Include="..\Ensek.Database.Contexts\Ensek.Database.Contexts.csproj" />
       <ProjectReference Include="..\Ensek.Database.Migrations\Ensek.Database.Migrations.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Data\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="..\..\Tests\Data\Test_Accounts.csv" Link="Data\Test_Accounts.csv">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

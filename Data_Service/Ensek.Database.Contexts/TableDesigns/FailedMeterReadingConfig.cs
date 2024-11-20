@@ -9,6 +9,10 @@ internal class FailedMeterReadingConfig : IEntityTypeConfiguration<FailedMeterRe
 {
     public void Configure(EntityTypeBuilder<FailedMeterReading> builder)
     {
+        builder.Property(b => b.TsIdentifier)
+            .IsRequired()
+            .ValueGeneratedNever();
+
         //builder.Property(b => b.FailedMeterReadingId)
         //.IsRequired()
 

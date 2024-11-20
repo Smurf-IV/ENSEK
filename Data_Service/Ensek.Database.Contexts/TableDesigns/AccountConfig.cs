@@ -10,7 +10,8 @@ internal class AccountConfig : IEntityTypeConfiguration<Account>
     public void Configure(EntityTypeBuilder<Account> builder)
     {
         builder.Property(b => b.AccountId)
-            .IsRequired();
+            .IsRequired()
+            .ValueGeneratedNever();
 
         // External Foreign Key / Index
         builder.HasIndex(p => new { p.AccountId})

@@ -10,8 +10,6 @@ namespace Ensek.Database.Tables;
 /// </remarks>
 public class Account
 {
-    public int RowId { get; set; }
-
     /// <summary>
     /// External Foreign Key / Index
     /// </summary>

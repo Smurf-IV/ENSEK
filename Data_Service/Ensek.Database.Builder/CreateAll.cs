@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
+using CsvHelper;
+
 using Ensek.Database.Contexts;
+using Ensek.Database.Tables;
+using Ensek.Dto.Common;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
@@ -19,8 +26,8 @@ public class CreateAll : IHostedService
     private ILogger<CreateAll> Logger { get; }
     private bool ShouldRun { get; }
 
-    public CreateAll(IServiceProvider sp, 
-        IHostApplicationLifetime appLifetime, 
+    public CreateAll(IServiceProvider sp,
+        IHostApplicationLifetime appLifetime,
         ILogger<CreateAll> logger,
         bool shouldRun)
     {
@@ -64,7 +71,26 @@ public class CreateAll : IHostedService
         var contextTypes = assembly.GetTypes().Where(t => !t.IsAbstract && t.IsSubclassOf(typeof(DbContext)));
         foreach (Type type in contextTypes)
         {
-            ServiceProvider.GetService(type);
+            var res = ServiceProvider.GetService(type);
+            if (res is EnsekContext ensekContext)
+            {
+                // Load the CSV File
+                var file = new StreamReader(File.OpenRead(@"./Data/Test_Accounts.csv"));
+                var csv = new CsvReader(file, CultureInfo.InvariantCulture);
+
+                var batchAccounts = new List<Account>();
+                foreach (var account in csv.GetRecords<AccountDto>())
+                {
+                    batchAccounts.Add(new Account
+                    {
+                        AccountId = account.AccountId,
+                        FirstName = account.FirstName,
+                        LastName = account.LastName
+                    });
+                }
+                ensekContext.Accounts.AddRange(batchAccounts);
+                ensekContext.SaveChanges();
+            }
         }
     }
 }
