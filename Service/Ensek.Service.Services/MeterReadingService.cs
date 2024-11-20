@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Ensek.DataAccess.Design;
 using Ensek.Database.Tables;
 using Ensek.Dto.Common;
@@ -45,9 +46,36 @@ public class MeterReadingService : IMeterReadingService
         };
         try
         {
-            await foreach (MeterReadingDto line in _csvService.ReadCSVAsync<MeterReadingDto>(file)
-                               .WithCancellation(cancellationToken))
+            // TODO: CSVHelper does not return an invlaid line if it throws an exception
+            //await foreach (MeterReadingDto line in _csvService.ReadCSVAsync<MeterReadingDto, MeterReadingDto>(file)
+            //                   .WithCancellation(cancellationToken))
+            var reader = new StreamReader(file);
+
+            // ReSharper disable once RedundantAssignment
+            var csvLine = await reader.ReadLineAsync(cancellationToken); // Skip Header
+            while (!reader.EndOfStream)
             {
+                csvLine = await reader.ReadLineAsync(cancellationToken);
+                if (string.IsNullOrWhiteSpace(csvLine))
+                {
+                    continue;
+                }
+                var bits = csvLine.Split(',', StringSplitOptions.TrimEntries);
+                var line = new MeterReadingDto
+                {
+                    AccountId = -1,
+                    MeterReadingDateTime = bits[1],
+                    MeterReadValue = -1
+                };
+                if (int.TryParse(bits[0], out var accountId))
+                {
+                    line.AccountId = accountId;
+                }
+                if (int.TryParse(bits[2], out var meterReadValue))
+                {
+                    line.MeterReadValue = meterReadValue;
+                }
+
                 Account? exists = await _accountReader.GetAccountAsync(line.AccountId);
                 if (exists is null)
                 {

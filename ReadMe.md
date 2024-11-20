@@ -8,6 +8,8 @@
 
 - The endpoint should be able to process a CSV of meter readings.
   - An example CSV file has been provided (Meter_reading.csv)
+  - **Q**: What should be done with rows that have extra data entries
+  = **A**: If the previous entries can be used then do so!
 
 - Each entry in the CSV should be validated and if valid, stored in a DB.
   - **Q:** What should be done when the values (i.e. dateColumn) are not in the correct format ?
@@ -81,9 +83,9 @@
 - Use `FluentAssertions` to abstract test conditions away from Test runner style
 - Use same code quality practices (Apart from a few exceptions in the `.editorConfig` file)
 - ![](./Tests/Data/MeterReadingTable.png)
+- ![](./Tests/Data/Tested.png)
 
 # To Do's
-- Need another type of CSV reader that can give the line data as there are 3 missing lines !
 - Write Unit tests for each of the areas
 - Add a command to get the `FailedMeterReadings`
  
