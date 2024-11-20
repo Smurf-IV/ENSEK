@@ -22,12 +22,12 @@ internal class FailedMeterReadingWriter : BaseWriter<EnsekContext, FailedMeterRe
 
     public async Task<int> CreateFailedMeterReadingAsync(ulong tsId, MeterReadingDto failedReading)
     {
-        _logger.LogTrace("CreateMeterReadingAsync IN {AccountId} {ReadingDateTime} {MeterReadValue}", failedReading.AccountId, failedReading.ReadingDateTime, failedReading.MeterReadValue);
+        _logger.LogTrace("CreateMeterReadingAsync IN {AccountId} {ReadingDateTime} {MeterReadValue}", failedReading.AccountId, failedReading.MeterReadingDateTime, failedReading.MeterReadValue);
         var entity = new FailedMeterReading
         {
             TsIdentifier = tsId,
             AccountId = failedReading.AccountId,
-            ReadingDateTime = failedReading.ReadingDateTime,
+            ReadingDateTime = failedReading.MeterReadingDateTime,
             MeterReadValue = failedReading.MeterReadValue
         };
         FailedMeterReading reading = await CreateAsync(entity);

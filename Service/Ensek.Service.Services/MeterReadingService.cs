@@ -56,7 +56,7 @@ public class MeterReadingService : IMeterReadingService
                     continue;
                 }
                 // `dd/MM/yyyy hh:mm` enUk 24hour UTC zero padding!
-                if (!DateTime.TryParseExact(line.ReadingDateTime, "dd/MM/yyyy hh:mm", new CultureInfo("en-UK"),
+                if (!DateTime.TryParseExact(line.MeterReadingDateTime, "dd/MM/yyyy hh:mm", new CultureInfo("en-UK"),
                         DateTimeStyles.AssumeUniversal, out DateTime dateTime))
                 {
                     results.AddError(line, "Failed DateTime conversion");

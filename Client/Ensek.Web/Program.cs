@@ -1,3 +1,6 @@
+using System.Net.Http;
+using System;
+
 using Ensek.Web;
 using Ensek.Web.Components;
 
@@ -16,7 +19,9 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddOutputCache();
 
-builder.Services.AddHttpClient<WeatherApiClient>(client => client.BaseAddress = new("http://apiservice"));
+// No authorisation, so hack a base address
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5405/") });
+builder.Services.AddScoped<IUploadService, UploadService>();
 
 WebApplication app = builder.Build();
 

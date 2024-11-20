@@ -24,11 +24,11 @@ internal class MeterReadingWriter : BaseWriter<EnsekContext, MeterReading>, IMet
 
     public async Task<int> CreateMeterReadingAsync(MeterReadingDto readingDto, DateTime readingDateTimeUTC)
     {
-        _logger.LogTrace("CreateMeterReadingAsync IN {AccountId} {ReadingDateTime} {MeterReadValue}", readingDto.AccountId, readingDto.ReadingDateTime, readingDto.MeterReadValue);
+        _logger.LogTrace("CreateMeterReadingAsync IN {AccountId} {ReadingDateTime} {MeterReadValue}", readingDto.AccountId, readingDto.MeterReadingDateTime, readingDto.MeterReadValue);
         var entity = new MeterReading
         {
             AccountId = readingDto.AccountId,
-            ReadingDateTime = readingDto.ReadingDateTime!,
+            ReadingDateTime = readingDto.MeterReadingDateTime!,
             ReadingDateTimeUTC = readingDateTimeUTC,
             MeterReadValue = (uint)readingDto.MeterReadValue!
         };

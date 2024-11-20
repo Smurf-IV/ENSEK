@@ -7,7 +7,7 @@ public record MeterReadingDto
     /// <summary>
     /// When was it Created, As a string so that the client does not need to convert every time to display
     /// </summary>
-    public string? ReadingDateTime { get; set; }
+    public string? MeterReadingDateTime { get; set; }
 
     public int? MeterReadValue { get; set; }
 }

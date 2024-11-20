@@ -1,15 +1,11 @@
-using System;
-using System.Linq;
 using Ensek.DataAccess.Modules;
 using Ensek.Database.Contexts;
 
 using Ensek.Database.Migrations;
 using Ensek.Database.Migrations.Modules;
 using Ensek.Infrastructure.Common.Modules;
-using Ensek.Service.Controllers.Modules;
 using Ensek.Service.Logging;
 using Ensek.Service.Services.Modules;
-using Ensek.Web;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -42,10 +38,15 @@ new ServiceCollectionBuilder(builder.Services)
     .RegisterModule(new CommonInfrastructureModule(configuration))
     .RegisterModule(new LogConfigurationModule(configuration))
     .RegisterModule(new ServicesModule())
-    .RegisterModule(new ControllersModule())
+    //.RegisterModule(new ControllersModule()) // For some reason was not able to get this to work here !
     .Build();
 
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddControllers();
+
 // =================================== End
+
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -55,19 +56,9 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-app.MapGet("/weatherforecast", () =>
-{
-    WeatherForecast[] forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            10,"10"
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+app.UseRouting();
+app.MapControllers();
+app.MapDefaultControllerRoute();
 
 app.MapDefaultEndpoints();
 

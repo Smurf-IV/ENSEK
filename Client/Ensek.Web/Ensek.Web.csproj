@@ -21,6 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
+    <ProjectReference Include="..\..\Common\Ensek.Dto.Common\Ensek.Dto.Common.csproj" />
     <ProjectReference Include="..\..\Common\Ensek.ServiceDefaults\Ensek.ServiceDefaults.csproj" />
   </ItemGroup>
 

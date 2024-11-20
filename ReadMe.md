@@ -69,6 +69,10 @@
 - Controllers / Services / Data access to be in sepearate projects to allow testing and SOLID principles
 - Use `TimeSortableId`, for Logging moniker tracking (Time Permitting!), and tracking "Failed" reading storage
 
+### Client
+- Will be a blazor pages app
+- Will not have localisation applied
+
 ### Testing
 - Try not to use mocking: the database exists; Use it!
 - Use `FluentAssertions` to abstract test conditions away from Test runner style

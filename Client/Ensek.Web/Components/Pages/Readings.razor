@@ -1,0 +1,32 @@
+﻿@page "/readings"
+@rendermode InteractiveServer
+
+<PageTitle>Readings</PageTitle>
+
+<h1>Readings</h1>
+
+<div class="upload-section">
+    <div class="upload-components import-file">
+        <InputFile @key="@(_inputFileId)" id="selectfile" OnChange="HandleFileNameChange" />
+    </div>
+    <br />
+    <div class="upload-buttons">
+        <button class="upload-btn btn btn-primary" id="uploadbtn" disabled="@(!_hasFileName)" @onclick="UploadFileAsync">Upload</button>
+    </div>
+    @if (_hasErrors)
+    {
+        <p class="error">@_error</p>
+    }
+</div>
+<div class="progress-section">
+    @if (_progress is not null)
+    {
+        <h2 class="progress-text">
+            Import Results<br>
+        </h2>
+        <div class="progress-container">
+            <h4 class="progress-text">Successful: @(_progress.SuccessLines)</h4>
+            <h4 class="progress-text">Failed: @(_progress.FailedLines)</h4>
+        </div>
+    }
+</div>
