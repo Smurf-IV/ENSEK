@@ -2,7 +2,8 @@
 
 namespace Ensek.DataAccess.Design;
 
-internal interface IMeterReadingReader
+public interface IMeterReadingReader
 {
     Task<IReadOnlyList<MeterReading>> GetAllMeterReadingsAsync(int accountId);
+    Task<MeterReading?> GetLastReadAsync(int accountId);
 }

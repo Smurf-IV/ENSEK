@@ -24,4 +24,11 @@ internal class MeterReadingReader :IMeterReadingReader
                 .ToListAsync())
             .AsReadOnly();
     }
+
+    public Task<MeterReading?> GetLastReadAsync(int accountId)
+    {
+        return _ensekContext.MeterReadings
+            .OrderBy(a => a.ReadingDateTimeUTC)
+            .LastOrDefaultAsync(a => a.AccountId == accountId);
+    }
 }

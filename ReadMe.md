@@ -51,6 +51,8 @@
 - Each project will have analyzers for security and "others" to ehance the default(s) of Rosylyn.
 - Database has been Created (Migrated) via the `Ensek.Database.Builder` application
   - ![](./Data_Service/Ensek.Database.Builder/CheckDbCreated.png)
+  - `(localdb)\MSSQLLocalDB`
+  - Note that this **deletes** the entire database and reseeds the accounts table!
 - DateStamps in the CSV file are in UTC (If valid!)
 - `nuget` packages should not be "Copy-Left" style licenses!
 
@@ -78,10 +80,9 @@
 - Try not to use mocking: the database exists; Use it!
 - Use `FluentAssertions` to abstract test conditions away from Test runner style
 - Use same code quality practices (Apart from a few exceptions in the `.editorConfig` file)
+- ![](./Tests/Data/MeterReadingTable.png)
 
 # To Do's
-- Change CSV Helpers default to not throw exception on conversion failure
-- Get the results serialised back to the client
 - Write Unit tests for each of the areas
 - Add a command to get the `FailedMeterReadings`
  

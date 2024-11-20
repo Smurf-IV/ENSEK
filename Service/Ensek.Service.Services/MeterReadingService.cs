@@ -16,18 +16,21 @@ public class MeterReadingService : IMeterReadingService
     private readonly ILogger<MeterReadingService> _logger;
     private readonly ICSVService _csvService;
     private readonly IAccountReader _accountReader;
+    private readonly IMeterReadingReader _meterReadingReader;
     private readonly IMeterReadingWriter _meterReadingWriter;
     private readonly IFailedMeterReadingWriter _failedMeterReadingWriter;
 
     public MeterReadingService(ILogger<MeterReadingService> logger,
         ICSVService csvService, // TODO: As the number of DI items is large,I would have flipped to using delayed GetService<> as needed
         IAccountReader accountReader,
+        IMeterReadingReader meterReadingReader,
         IMeterReadingWriter meterReadingWriter,
         IFailedMeterReadingWriter failedMeterReadingWriter)
     {
         _logger = logger;
         _csvService = csvService;
         _accountReader = accountReader;
+        _meterReadingReader = meterReadingReader;
         _meterReadingWriter = meterReadingWriter;
         _failedMeterReadingWriter = failedMeterReadingWriter;
     }
@@ -67,6 +70,16 @@ public class MeterReadingService : IMeterReadingService
                     await _failedMeterReadingWriter.CreateFailedMeterReadingAsync(tsId, line);
                     continue;
                 }
+
+                MeterReading? lastReadAccount = await _meterReadingReader.GetLastReadAsync(line.AccountId);
+                if (lastReadAccount is not null
+                    && lastReadAccount.ReadingDateTimeUTC >= dateTime)
+                {
+                    results.AddError(line, "Failed This time is less than a last");
+                    await _failedMeterReadingWriter.CreateFailedMeterReadingAsync(tsId, line);
+                    continue;
+                }
+
                 // All good: so lets see if it can be added to the readings table
                 await _meterReadingWriter.CreateMeterReadingAsync(line, dateTime);
                 results.AddSuccess();

@@ -177,11 +177,10 @@ public partial class Readings : ComponentBase
             try
             {
                 // TODO: Use a BusyDialog 
-                ImportResultDto? result = await UploadAsync("api/MeterReading/Import", _file!);
+                ImportResultDto? result = await UploadAsync("meter-reading-uploads", _file!);
 
                 if (result != null)
                 {
-                    _inputFileId = Guid.NewGuid().ToString();
                     _progress = result;
                 }
 

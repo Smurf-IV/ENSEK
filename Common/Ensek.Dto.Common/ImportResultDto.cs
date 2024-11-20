@@ -2,9 +2,9 @@
 
 public record ImportResultDto
 {
-    public uint SuccessLines { get; private set; }
-    public uint FailedLines { get; private set; }
-    public string? ExceptionMessage { get; private set; }
+    public uint SuccessLines { get; set; }
+    public uint FailedLines { get; set; }
+    public string? ExceptionMessage { get; set; }
     public long TsId { get; set; }
 
     public void AddError(MeterReadingDto? line, string failedToRetrieveAccount)

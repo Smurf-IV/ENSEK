@@ -14,7 +14,7 @@ using TSID.Creator.NET;
 namespace Ensek.Service.Controllers;
 
 [ApiController]
-[Route("api/MeterReading")]
+[Route("meter-reading-uploads")]
 public class MeterReadingController : ControllerBase
 {
     private readonly ILogger<MeterReadingController> _logger;
@@ -28,7 +28,7 @@ public class MeterReadingController : ControllerBase
     }
 
     [HttpPost]
-    [Route(@"Import")]
+    //[Route(@"Import")]
     public async Task<ImportResultDto> ImportAsync([FromForm] IFormFileCollection file)
     {
         long tsId = TsidCreator.GetTsid().ToLong();
