@@ -4,21 +4,23 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text.Json.Serialization;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 
 using Aspire.Hosting;
+
 using Ensek.Database.Contexts;
 using Ensek.Dto.Common;
+
 using FluentAssertions;
-using Microsoft.Extensions.Configuration;
 
 
 // ReSharper disable ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+#pragma warning disable CA8618
 #pragma warning disable CA2234
 
 
@@ -31,7 +33,7 @@ public class WebTests
     private HttpClient _httpClient;
     private HttpClient _httpClient1;
 
-    private void CreateCleanStorage()
+    private static void CreateCleanStorage()
     {
         var dir = Directory.GetCurrentDirectory();
         using var p = new Process
@@ -63,7 +65,7 @@ public class WebTests
     public async Task OneTimeSetUp()
     {
         CreateCleanStorage();
-        
+
         IDistributedApplicationTestingBuilder appHost = await DistributedApplicationTestingBuilder.CreateAsync<Projects.Ensek_AppHost>();
         appHost.Services.ConfigureHttpClientDefaults(clientBuilder =>
         {
@@ -97,10 +99,9 @@ public class WebTests
             }
             else
             {
-                _app.Dispose();
+                await _app.DisposeAsync();
             }
         }
-
     }
 
     [Test]

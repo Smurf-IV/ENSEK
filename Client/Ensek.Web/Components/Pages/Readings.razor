@@ -15,7 +15,7 @@
     </div>
     @if (_hasErrors)
     {
-        <p class="error">@_error</p>
+        <p class="error">Error: @_error</p>
     }
 </div>
 <div class="progress-section">
@@ -25,6 +25,7 @@
             Import Results<br>
         </h2>
         <div class="progress-container">
+            <h4 class="progress-text">FileName: @(_progress.FileName)</h4>
             <h4 class="progress-text">Successful: @(_progress.SuccessLines)</h4>
             <h4 class="progress-text">Failed: @(_progress.FailedLines)</h4>
             @if (!string.IsNullOrWhiteSpace(_progress.ExceptionMessage))

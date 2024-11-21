@@ -1,4 +1,6 @@
-﻿using Ensek.DataAccess.Extensions;
+﻿using System.Diagnostics.CodeAnalysis;
+
+using Ensek.DataAccess.Extensions;
 using Ensek.Database.Contexts.Context;
 
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -27,7 +29,7 @@ public abstract class BaseWriter<TContext, TTable> where TContext : BaseDbContex
     /// Do not make this Async:
     /// https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbset-1.addrangeasync?view=efcore-2.1#Microsoft_EntityFrameworkCore_DbSet_1_AddRangeAsync__0___
     /// </remarks>
-    public virtual async Task<TTable> CreateAsync(TTable toCreate, bool acceptAllChangesOnSuccess = true, CancellationToken token = default)
+    public virtual async Task<TTable> CreateAsync([NotNull] TTable toCreate, bool acceptAllChangesOnSuccess = true, CancellationToken token = default)
     {
         try
         {
@@ -42,7 +44,7 @@ public abstract class BaseWriter<TContext, TTable> where TContext : BaseDbContex
         catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
         {
-            logger.LogError(e, "Error creating entry {0}", toCreate?.ToString());
+            logger.LogError(e, "Error creating entry {ToCreate}", toCreate?.ToString());
             return toCreate;
         }
     }
@@ -77,7 +79,7 @@ public abstract class BaseWriter<TContext, TTable> where TContext : BaseDbContex
         catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
         {
-            logger.LogError(e, @"Error creating entry {0}", toCreate?.ToString());
+            logger.LogError(e, @"Error creating entry {ToCreate}", toCreate?.ToString());
             return false;
         }
     }
@@ -95,7 +97,7 @@ public abstract class BaseWriter<TContext, TTable> where TContext : BaseDbContex
         catch (Exception e)
 #pragma warning restore CA1031 // Do not catch general exception types
         {
-            logger.LogError(e, @"Error updating entry {0}", toUpdate?.ToString());
+            logger.LogError(e, @"Error updating entry {ToUpdate}", toUpdate?.ToString());
             return toUpdate;
         }
     }

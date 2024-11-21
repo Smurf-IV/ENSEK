@@ -5,6 +5,8 @@
 ## Must Have:
 - Create the following endpoint:
   - `POST => /meter-reading-uploads`
+  - **Q**: What sort of payload will this be taking ?
+  - **A**: Assume `IFormFileCollection` for now, so that it can track what file may have caused failures.
 
 - The endpoint should be able to process a CSV of meter readings.
   - An example CSV file has been provided (Meter_reading.csv)
@@ -50,7 +52,7 @@
 # Assumptions
 - Visual Studio 17.12
 - Sql LocalDB installed
-- Each project will have analyzers for security and "others" to ehance the default(s) of Rosylyn.
+- Each project will have analyzers for security and "others" to enhance the default(s) of Rosylyn.
 - Database has been Created (Migrated) via the `Ensek.Database.Builder` application
   - ![](./Data_Service/Ensek.Database.Builder/CheckDbCreated.png)
   - `(localdb)\MSSQLLocalDB`
@@ -86,6 +88,50 @@
 - ![](./Tests/Data/Tested.png)
 
 # To Do's
-- Write Unit tests for each of the areas
-- Add a command to get the `FailedMeterReadings`
- 
+- Add a Test project that demonstrates using a real database and not mocking
+- Use the `FileSignature` to check (both sides) that the csv file is real and not too big (OWASP)
+- Add a UI command to get the `FailedMeterReadings` (and Testing)
+
+# Work Progress
+## Wednesday
+- About 3 hours in the morning
+### Commit 1
+- Create ReadMe.md
+- Create solution layout
+- Add default solution items
+- Make sure it builds
+
+## Thursday Morning
+- About 3 hours in the morning
+### Commit 2
+- Add code to perform Database "SOLID" style projects
+- Some more skeleton code to perform "Readings" Ingest
+### Commit 3
+- Update the Client to send the file
+### Commit 4
+- Update Readme with messages of what still needs to be done !
+
+## Thursday Afternoon
+- About 4 hours
+### Commit 5
+- Get the Table Seed data done via Ensek.Database.Builder application
+### Commit 6
+- Change CSV Helpers default to not throw exception on conversion failure
+- Get the results serialised back to the client
+### Commit 7
+- Need another type of CSV reader that can give the line data as there are 3 missing lines !
+
+## Thursday Evening
+- Just over 2 hours
+### Commit 7
+- Add Some testing methodologies
+- Fix the usage of the single source in the Controllers
+- Add a bit more Error handling
+- Fiddle with the appSettings
+
+## Friday Morning
+- Only 1.5 hours to go !
+### Commit 8
+- ReadMe update
+- fix Some Compile warnings
+

@@ -385,6 +385,8 @@ dotnet_diagnostic.IDE1006.severity = none
 # Modify analysers on Unit Test code files
 [*Test*]
 
+# Expression value is never used
+dotnet_diagnostic.IDE0058.severity = none 
 # <!--	Unnecessary assignment of a value to 'result' -->
 dotnet_diagnostic.IDE0059.severity = none 
 

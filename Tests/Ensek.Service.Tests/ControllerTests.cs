@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+
 using Ensek.Dto.Common;
 using Ensek.Service.Controllers;
 using Ensek.Service.Services;
@@ -9,9 +10,11 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Primitives;
 
 using Moq;
+
+// ReSharper disable ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+#pragma warning disable CA8618
 
 namespace Ensek.Service.Tests;
 
@@ -34,7 +37,7 @@ public class ControllerTests
     {
         _meterReadingController.Should().NotBeNull();
         Type type = _meterReadingController.GetType();
-        MethodInfo? methodInfo = type.GetMethod("ImportAsync", new Type[] { typeof(IFormFileCollection) });
+        MethodInfo? methodInfo = type.GetMethod("ImportAsync", [typeof(IFormFileCollection)]);
         methodInfo.Should().NotBeNull("Api's should exist");
         List<RouteAttribute> attrRoutes = type.GetCustomAttributes(typeof(RouteAttribute), true).Cast<RouteAttribute>().ToList();
         attrRoutes[0].Template
@@ -51,13 +54,14 @@ public class ControllerTests
         result.ExceptionMessage.Should().NotBeNullOrEmpty("An Exception should have been thrown for the missing file!");
     }
 
+    /*
     private static IFormFileCollection GetFormFileCollection(string pathToFile)
     {
         var dir = Directory.GetCurrentDirectory();
         var fileInfo = new FileInfo(Path.Combine(dir, pathToFile));
         List<string> filesPathsListToUpload = [fileInfo.FullName];
 
-        FormFileCollection filesCollection = new FormFileCollection();
+        FormFileCollection filesCollection = [];
         foreach (var filePath in filesPathsListToUpload)
         {
             var stream = File.OpenRead(filePath);
@@ -74,10 +78,11 @@ public class ControllerTests
 
         var httpContext = new DefaultHttpContext();
         httpContext.Request.Headers.Add("Content-Type", "multipart/form-data");
-        httpContext.Request.Form = new FormCollection(new Dictionary<string, StringValues>(), filesCollection);
+        httpContext.Request.Form = new FormCollection(new(), filesCollection);
 
         return httpContext.Request.Form.Files;
     }
+    */
 
     private static IFormFile GetMockFormFile(string modelName, string filename)
     {
@@ -92,7 +97,7 @@ public class ControllerTests
     [Test]
     public async Task A021_MockSendEmptyFile()
     {
-        IFormFileCollection formFileCollection = GetFormFileCollection("Data/Meter_Reading_Empty.csv");
+        //IFormFileCollection formFileCollection = GetFormFileCollection("Data/Meter_Reading_Empty.csv");
         var dir = Directory.GetCurrentDirectory();
         var fileInfo = new FileInfo(Path.Combine(dir, "Data/Meter_Reading_Empty.csv"));
         var formFiles = new FormFileCollection

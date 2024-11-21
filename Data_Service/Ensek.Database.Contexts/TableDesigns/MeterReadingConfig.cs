@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Ensek.Database.Contexts.TableDesigns;
 
-internal class MeterReadingConfig : IEntityTypeConfiguration<MeterReading>
+internal sealed class MeterReadingConfig : IEntityTypeConfiguration<MeterReading>
 {
     public void Configure(EntityTypeBuilder<MeterReading> builder)
     {

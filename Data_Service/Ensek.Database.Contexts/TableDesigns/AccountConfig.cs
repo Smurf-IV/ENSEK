@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Ensek.Database.Contexts.TableDesigns;
 
-internal class AccountConfig : IEntityTypeConfiguration<Account>
+internal sealed class AccountConfig : IEntityTypeConfiguration<Account>
 {
     public void Configure(EntityTypeBuilder<Account> builder)
     {
@@ -14,7 +14,7 @@ internal class AccountConfig : IEntityTypeConfiguration<Account>
             .ValueGeneratedNever();
 
         // External Foreign Key / Index
-        builder.HasIndex(p => new { p.AccountId})
+        builder.HasIndex(p => new { p.AccountId })
             .IsUnique(true);
 
         builder.Property(b => b.FirstName)

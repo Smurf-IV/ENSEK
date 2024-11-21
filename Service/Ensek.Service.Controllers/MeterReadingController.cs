@@ -43,7 +43,7 @@ public class MeterReadingController : ControllerBase
                 // Handle Mocking hiding the call, Or something has gone wrong with the DI
                 throw new FieldAccessException("Unable to access file");
             }
-
+            importResult.FileName = file[0].FileName;
             return importResult;
         }
         catch (Exception ex)

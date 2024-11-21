@@ -6,6 +6,7 @@ public record ImportResultDto
     public uint FailedLines { get; set; }
     public string? ExceptionMessage { get; set; }
     public long TsId { get; set; }
+    public string? FileName { get; set; }
 
     public void AddError(MeterReadingDto? line, string failedToRetrieveAccount)
     {

@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,9 +10,12 @@ using AngleSharp.Io;
 
 namespace Ensek.Tests;
 
-public class HtmlHelpers
+// ReSharper disable ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+#pragma warning disable CA8602
+
+public static class HtmlHelpers
 {
-    public static async Task<IHtmlDocument> GetDocumentAsync(HttpResponseMessage response)
+    public static async Task<IHtmlDocument> GetDocumentAsync([NotNull] HttpResponseMessage response)
     {
         var content = await response.Content.ReadAsStringAsync();
         var document = await BrowsingContext.New()

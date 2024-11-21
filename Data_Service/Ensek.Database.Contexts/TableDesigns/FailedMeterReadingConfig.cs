@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Ensek.Database.Contexts.TableDesigns;
 
-internal class FailedMeterReadingConfig : IEntityTypeConfiguration<FailedMeterReading>
+internal sealed class FailedMeterReadingConfig : IEntityTypeConfiguration<FailedMeterReading>
 {
     public void Configure(EntityTypeBuilder<FailedMeterReading> builder)
     {
