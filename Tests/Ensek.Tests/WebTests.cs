@@ -45,7 +45,7 @@ public class WebTests
 #if DEBUG
                     "Debug",
 #else
-                "Release"
+                "Release",
 #endif
                     "net9.0/Ensek.Database.Builder.exe"),
                 Arguments =
