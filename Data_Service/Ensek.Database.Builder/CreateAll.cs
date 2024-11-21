@@ -75,7 +75,7 @@ public class CreateAll : IHostedService
             if (res is EnsekContext ensekContext)
             {
                 // Load the CSV File
-                var dir = Directory.GetCurrentDirectory();
+                var dir = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
                 var file = new StreamReader(File.OpenRead(Path.Combine(dir,"Data/Test_Accounts.csv")));
                 var csv = new CsvReader(file, CultureInfo.InvariantCulture);
 
