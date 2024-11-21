@@ -88,7 +88,6 @@
 - ![](./Tests/Data/Tested.png)
 
 # To Do's
-- Add a Test project that demonstrates using a real database and not mocking
 - Use the `FileSignature` to check (both sides) that the csv file is real and not too big (OWASP)
 - Add a UI command to get the `FailedMeterReadings` (and Testing)
 
@@ -134,4 +133,5 @@
 ### Commit 8
 - ReadMe update
 - fix Some Compile warnings
-
+### Commit 9
+- Add a Test project that demonstrates using a real database and not mocking

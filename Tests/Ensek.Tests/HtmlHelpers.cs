@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using AngleSharp;
+using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 using AngleSharp.Io;
 
@@ -13,12 +14,14 @@ namespace Ensek.Tests;
 // ReSharper disable ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
 #pragma warning disable CA8602
 
+// TODO: Move to Test Util project
+[ExcludeFromCodeCoverage]
 public static class HtmlHelpers
 {
     public static async Task<IHtmlDocument> GetDocumentAsync([NotNull] HttpResponseMessage response)
     {
         var content = await response.Content.ReadAsStringAsync();
-        var document = await BrowsingContext.New()
+        IDocument document = await BrowsingContext.New()
             .OpenAsync(ResponseFactory, CancellationToken.None);
         return (IHtmlDocument)document;
 

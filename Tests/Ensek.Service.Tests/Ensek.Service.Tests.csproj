@@ -26,16 +26,15 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Using Include="NUnit.Framework" />
-    </ItemGroup>
-
-    <ItemGroup>
         <Folder Include="Data\" />
     </ItemGroup>
 
     <ItemGroup>
         <None Include="..\Data\Meter_Reading.csv" Link="Data\Meter_Reading.csv">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="..\Data\Meter_Reading_Empty.csv" Link="Data\Meter_Reading_Empty.csv">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
         <None Include="..\Data\Test_Accounts.csv" Link="Data\Test_Accounts.csv">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
